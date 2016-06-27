@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>gridgame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" media="screen" title="no title" charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-md-4 player-login">player login
+
+        </div>
+        <div class="col-md-8 game-grid">game grid
+            <div id="position">
+                <div class="vertical">
+                    <p>
+                        vertical <span id="vertical">0</span>
+                    </p>
+                    <button id="up" type="button" name="up-button">up</button>
+                    <button id="down" type="button" name="down-button">down</button>
+                </div>
+                <div class="horizontal">
+                    <p>
+                      horizontal <span id="horizontal">0</span>
+                    </p>
+                    <button id="left" type="button" name="left-button">left</button>
+                    <button id="right" type="button" name="right-button">right</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="http://backbonejs.org/backbone-min.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+</body>
+
+</html>

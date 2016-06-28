@@ -12,24 +12,34 @@
 <body>
 
     <div class="row">
-        <div class="col-md-4 player-login">player login
+        <div class="col-md-4 login" id="player-login">
+          <div class="col-lg-offset-1 col-lg-10">
+            <h1>Player Login</h1>
+            <div class="input-group">
+                <input type="text" id="playerName"class="form-control" placeholder="Player One">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" id="playerInput" type="button">Enter</button>
+                </span>
 
+            </div>
+          </div>
         </div>
-        <div class="col-md-8 game-grid">game grid
+        <div class="col-md-8 game-grid">
+          <h1>Game Grid</h1>
             <div id="position">
                 <div class="vertical">
                     <p>
                         vertical <span id="vertical">0</span>
                     </p>
-                    <button id="up" type="button" name="up-button">up</button>
-                    <button id="down" type="button" name="down-button">down</button>
+                    <button id="up" type="button" class="btn btn-primary">Up</button>
+                    <button id="down" type="button" class="btn btn-primary" name="down-button">Down</button>
                 </div>
                 <div class="horizontal">
                     <p>
-                      horizontal <span id="horizontal">0</span>
+                        horizontal <span id="horizontal">0</span>
                     </p>
-                    <button id="left" type="button" name="left-button">left</button>
-                    <button id="right" type="button" name="right-button">right</button>
+                    <button id="left" type="button" class="btn btn-primary" name="left-button">Left</button>
+                    <button id="right" type="button" class="btn btn-primary" name="right-button">Right</button>
                 </div>
 
             </div>

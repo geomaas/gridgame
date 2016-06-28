@@ -1,9 +1,13 @@
+
+
 module.exports = Backbone.Model.extend({
     // Initial value for data that the model is responsible for.
     defaults: {
         xStart: 0, //horizontal
 
         yStart: 0, //vertical
+
+        // player: "default",
 
     },
 
@@ -30,5 +34,9 @@ module.exports = Backbone.Model.extend({
           this.set('xStart', this.get('xStart') + 1);
       }
     },
+
+  //   currentPlayer: function () {
+  //      this.get('player');
+  //  }
 
 });

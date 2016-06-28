@@ -2,28 +2,57 @@
 let GridModel = require('./model/gridmodel');
 let GridView = require('./view/gridview');
 
-window.addEventListener('load', function () {
+///// login page
+let GameModel = require('./model/gamemodel');
+let GameView = require('./view/gameview');
+
+window.addEventListener('load', function() {
     // Models roll on their own.
-    let gmodel = new GridModel();
+    let grmodel = new GridModel();
 
     // Views like company. They need to know two things:
     //    1. What data do I care about?
     //    2. What DOM elements should I be updating when things change?
-    let volume = new GridView({
-        model: gmodel,
+    let grid = new GridView({
+        model: grmodel,
         el: document.getElementById('position'),
     });
+    let login = new GameModel();
 
+    let player = new GameView({
+            model: login,
+            el: document.getElementById('player-login'),
+        });
+        
+});
+
+},{"./model/gamemodel":2,"./model/gridmodel":3,"./view/gameview":4,"./view/gridview":5}],2:[function(require,module,exports){
+
+
+module.exports = Backbone.Model.extend({
+    // Initial value for data that the model is responsible for.
+    defaults: {
+        player: "default",
+
+    },
+
+    currentPlayer: function () {
+       this.get('player');
+   }
 
 });
 
-},{"./model/gridmodel":2,"./view/gridview":3}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
+
+
 module.exports = Backbone.Model.extend({
     // Initial value for data that the model is responsible for.
     defaults: {
         xStart: 0, //horizontal
 
         yStart: 0, //vertical
+
+        // player: "default",
 
     },
 
@@ -51,9 +80,45 @@ module.exports = Backbone.Model.extend({
       }
     },
 
+  //   currentPlayer: function () {
+  //      this.get('player');
+  //  }
+
 });
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
+module.exports = Backbone.View.extend({
+    // 'Constructor' function - what to do at the beginning
+    initialize: function () {
+        this.model.on('change', this.render, this); // this as third arg
+    },
+
+    // Event listeners to set up
+    events: {
+        // 'event-name selector': 'function-to-call'
+
+        'click #playerInput': 'enterPlayer'
+    },
+
+    enterPlayer: function () {
+        this.model.currentPlayer();
+    },
+
+    // How to update the DOM when things change
+    render: function () {
+
+
+        let playerName = this.el.querySelector('#playerName');
+        // playerName.textContent = this.model.get('player');
+        console.log(this);
+
+        // let song = this.el.querySelector('#current-song');
+        // // song.textContent = this.model.currentSong();
+        // song.innerHTML = `The song is ${this.model.currentSong()}`;
+    },
+});
+
+},{}],5:[function(require,module,exports){
 module.exports = Backbone.View.extend({
     // 'Constructor' function - what to do at the beginning
     initialize: function () {
@@ -67,6 +132,7 @@ module.exports = Backbone.View.extend({
         'click #down': 'clickDown',
         'click #left': 'clickLeft',
         'click #right': 'clickRight',
+        // 'click #playerInput': 'enterPlayer'
     },
 
     clickUp: function () {
@@ -85,6 +151,10 @@ module.exports = Backbone.View.extend({
         this.model.right();
     },
 
+    // enterPlayer: function () {
+    //     this.model.currentPlayer();
+    // },
+
     // How to update the DOM when things change
     render: function () {
         let xMove = this.el.querySelector('#horizontal');
@@ -92,6 +162,10 @@ module.exports = Backbone.View.extend({
 
         let yMove = this.el.querySelector('#vertical');
         yMove.textContent = this.model.get('yStart');
+
+        // let playerName = this.el.querySelector('#playerName');
+        // playerName.textContent = this.model.get('player');
+        // console.log(player);
 
         // let song = this.el.querySelector('#current-song');
         // // song.textContent = this.model.currentSong();

@@ -11,6 +11,7 @@ module.exports = Backbone.View.extend({
         'click #down': 'clickDown',
         'click #left': 'clickLeft',
         'click #right': 'clickRight',
+        // 'click #playerInput': 'enterPlayer'
     },
 
     clickUp: function () {
@@ -29,6 +30,10 @@ module.exports = Backbone.View.extend({
         this.model.right();
     },
 
+    // enterPlayer: function () {
+    //     this.model.currentPlayer();
+    // },
+
     // How to update the DOM when things change
     render: function () {
         let xMove = this.el.querySelector('#horizontal');
@@ -36,6 +41,10 @@ module.exports = Backbone.View.extend({
 
         let yMove = this.el.querySelector('#vertical');
         yMove.textContent = this.model.get('yStart');
+
+        // let playerName = this.el.querySelector('#playerName');
+        // playerName.textContent = this.model.get('player');
+        // console.log(player);
 
         // let song = this.el.querySelector('#current-song');
         // // song.textContent = this.model.currentSong();
